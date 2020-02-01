@@ -1,0 +1,66 @@
+﻿@model SendEmail.Models.Contact
+@{
+    ViewData["Title"] = "Contact";
+}
+<h3>Send E-mail In ASP.Net Core 2.1 Using MailKit</h3>
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        @if (@TempData["message"] != null)
+        {
+            <style type="text/css">
+                #myForm {
+                    display: none;
+                }
+            </style>
+
+            <div class=" alert alert-info alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="pt-4 pb-4 pl-3">
+                    <p class="font-weight-normal lead">Thank You: <span class="text-danger">@TempData["myName"]</span> 
+                    for your interest in <span class="text-danger">@TempData["myCategory"]</span> !!!</p>
+                    <p class="font-weight-normal lead">
+                        @TempData["message"]
+                    </p>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<div class="has-error" col-md-12>
+    <form method="post">
+        @*<div class="row">
+            <div class="form-group col-md-4">
+                <label asp-for="Name">Name:</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-muted"></span>
+            </div>
+        </div>*@
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label asp-for="Email">Email:</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-muted"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label asp-for="Subject">Subject:</label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-muted"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Message">Message:</label>
+                <textarea rows="8" cols="20" asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-muted"></span>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">Send Message</button>
+        </div>
+    </form>
+</div>
